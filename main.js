@@ -40,33 +40,33 @@ function matchCounting() {
 }
 
 function matchPlayed() {
+  playBtn.textContent = "Play";
+  const hand = humanHand.value.toLowerCase();
   getComputerChoice();
-  if (humanHand.value === "Rock" && computerResponse === "Paper") {
+
+  if (hand === "rock" && computerResponse === "Paper") {
     computerResult.textContent = `You Lose Against ${computerResponse}`;
     matchCountComputer += 1;
-  } else if (humanHand.value === "Paper" && computerResponse === "Scissors") {
+  } else if (hand === "paper" && computerResponse === "Scissors") {
     computerResult.textContent = `You Lose Against ${computerResponse}`;
     matchCountComputer += 1;
-  } else if (humanHand.value === "Scissors" && computerResponse === "Rock") {
+  } else if (hand === "scissors" && computerResponse === "Rock") {
     computerResult.textContent = `You Lose Against ${computerResponse}`;
     matchCountComputer += 1;
-  } else if (humanHand.value === "Paper" && computerResponse === "Rock") {
+  } else if (hand === "paper" && computerResponse === "Rock") {
     computerResult.textContent = `You Win Against ${computerResponse}`;
     matchCountHuman += 1;
-  } else if (humanHand.value === "Scissors" && computerResponse === "Paper") {
+  } else if (hand === "scissors" && computerResponse === "Paper") {
     computerResult.textContent = `You Win Against ${computerResponse}`;
     matchCountHuman += 1;
-  } else if (humanHand.value === "Rock" && computerResponse === "Scissors") {
+  } else if (hand === "rock" && computerResponse === "Scissors") {
     computerResult.textContent = `You Win Against ${computerResponse}`;
     matchCountHuman += 1;
-  } else if (humanHand.value === "Rock" && computerResponse === "Rock") {
+  } else if (hand === "rock" && computerResponse === "Rock") {
     computerResult.textContent = `It's A ${computerResponse} Tie`;
-  } else if (humanHand.value === "Paper" && computerResponse === "Paper") {
+  } else if (hand === "paper" && computerResponse === "Paper") {
     computerResult.textContent = `It's A ${computerResponse} Tie`;
-  } else if (
-    humanHand.value === "Scissors" &&
-    computerResponse === "Scissors"
-  ) {
+  } else if (hand === "scissors" && computerResponse === "Scissors") {
     computerResult.textContent = `It's A ${computerResponse} Tie`;
   } else {
   }
