@@ -2,7 +2,7 @@ const computerResult = document.querySelector("h1");
 const matchResult = document.querySelector("p");
 const humanHand = document.querySelector("input");
 const playBtn = document.querySelector("button");
-let scoreCount = document.getElementById("score");
+let scoreCount = document.querySelector("#score");
 
 let computerResponse = "";
 let matchCountComputer = 0;
