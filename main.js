@@ -1,12 +1,16 @@
 const computerResult = document.querySelector("h1");
 const matchResult = document.querySelector("p");
-const humanHand = document.querySelector("input");
-const playBtn = document.querySelector("button");
+const playBtn = document.querySelector(".play-btn");
 let scoreCount = document.querySelector("#score");
+const rockBtn = document.querySelector(".rock");
+const paperBtn = document.querySelector(".paper");
+const scissorsBtn = document.querySelector(".scissors");
 
 let computerResponse = "";
 let matchCountComputer = 0;
 let matchCountHuman = 0;
+
+let gameOver = false;
 
 function getComputerChoice() {
   const computerHand = Math.random();
@@ -28,20 +32,30 @@ function matchCounting() {
   if (matchCountComputer === 5) {
     computerResult.textContent = "Machine Won The Match Series";
     playBtn.textContent = "Replay";
-    matchCountComputer = 0;
-    matchCountHuman = 0;
+    gameOver = true;
   } else if (matchCountHuman === 5) {
     computerResult.textContent = "You Won The Match Series";
     playBtn.textContent = "Replay";
-    matchCountComputer = 0;
-    matchCountHuman = 0;
+    gameOver = true;
   } else {
   }
 }
 
-function matchPlayed() {
+function replay() {
+  matchCountComputer = 0;
+  matchCountHuman = 0;
+  gameOver = false;
+  scoreDisplay();
+  computerResult.textContent = "";
+  matchResult.textContent = "";
   playBtn.textContent = "Play";
-  const hand = humanHand.value.toLowerCase();
+}
+
+const hand = "";
+
+function matchPlayed(hand) {
+  if (gameOver) return;
+  playBtn.textContent = "Play";
   getComputerChoice();
 
   if (hand === "rock" && computerResponse === "Paper") {
@@ -74,5 +88,8 @@ function matchPlayed() {
   scoreDisplay();
   matchCounting();
 }
+playBtn.addEventListener("click", replay);
 
-playBtn.addEventListener("click", matchPlayed);
+rockBtn.addEventListener("click", () => matchPlayed("rock"));
+paperBtn.addEventListener("click", () => matchPlayed("paper"));
+scissorsBtn.addEventListener("click", () => matchPlayed("scissors"));
